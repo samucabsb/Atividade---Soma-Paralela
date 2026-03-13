@@ -114,7 +114,7 @@ Eixo Y: tempo de execução (segundos)
 
 Gráfico abaixo:
 
-## 8. Gráfico de Speedup
+![Tempo de Execução](graficos/chart.png)
 
 Construa um gráfico mostrando o speedup obtido.
 
