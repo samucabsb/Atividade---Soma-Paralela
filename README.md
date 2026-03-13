@@ -114,7 +114,11 @@ Eixo Y: tempo de execução (segundos)
 
 Gráfico abaixo:
 
-![Tempo de Execução](graficos/chart.png)
+![Tempo de Execução](execucao.png)
+
+---
+
+## 8. Gráfico de Speedup
 
 Construa um gráfico mostrando o speedup obtido.
 
@@ -125,6 +129,10 @@ Eixo Y: speedup
 Incluir também a linha de speedup ideal (linear) para comparação  
 
 Gráfico abaixo:
+
+![Speedup](speedup.png)
+
+---
 
 ## 9. Gráfico de Eficiência
 
@@ -137,6 +145,8 @@ Eixo Y: eficiência
 Valores entre 0 e 1  
 
 Gráfico abaixo:
+
+![Eficiência](eficiencia.png)
 
 ## 10. Análise dos Resultados
 
