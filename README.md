@@ -1,74 +1,53 @@
-# Análise de Paralelização – Soma de Números com Threads
+# Parallelization Analysis – Number Summation with Threads
 
-## 1. Descrição do Problema
+## 1. Problem Description
 
-**Qual é o objetivo do programa?**  
-O objetivo do programa é ler um arquivo de texto contendo vários números inteiros e calcular a soma total desses valores. Para melhorar o desempenho, o programa utiliza múltiplas threads para processar partes do arquivo em paralelo.
+**What is the program's objective?** The program's objective is to read a text file containing numerous integer values and calculate the total sum of these numbers. To improve performance, the application utilizes multiple threads to process parts of the file in parallel.
 
-**Qual problema foi implementado?**  
-Foi implementado um problema de processamento de dados em que é necessário somar uma grande quantidade de números armazenados em um arquivo. O desafio é realizar essa soma de forma eficiente utilizando paralelização.
+**What problem was implemented?** A data processing problem was implemented where a massive amount of numbers stored in a file must be summed. The challenge is to perform this summation efficiently using parallelization.
 
-**Qual algoritmo foi utilizado?**  
-O algoritmo utilizado consiste em dividir os dados do arquivo entre várias threads. Cada thread calcula uma soma parcial dos números que recebeu, e ao final todas as somas parciais são combinadas para gerar o resultado final.
+**Which algorithm was used?** The algorithm divides the file data among multiple threads. Each thread calculates a partial sum of its assigned numbers, and finally, all partial sums are combined to generate the final result.
 
-**Qual o volume de dados processado?**  
-Nos testes foram utilizados arquivos com aproximadamente 1 milhão de números e 10 milhões de números, onde cada linha do arquivo contém um número inteiro.
+**What is the processed data volume?** Tests were conducted using files with approximately 1 million and 10 million numbers, where each line of the file contains a single integer.
 
-**Qual o tamanho da entrada utilizada nos testes?**  
-O tamanho da entrada corresponde ao número de linhas do arquivo. Foram utilizados arquivos com 1.000.000 e 10.000.000 de linhas.
+**What is the input size used in the tests?** The input size corresponds to the number of lines in the file. Files with 1,000,000 and 10,000,000 lines were used.
 
-**Qual o objetivo da paralelização?**  
-O objetivo da paralelização é dividir o trabalho entre várias threads para reduzir o tempo total de execução do programa.
+**What is the goal of parallelization?** The goal is to divide the workload among multiple threads to reduce the program's total execution time.
 
-**Qual a complexidade aproximada do algoritmo?**  
-A complexidade do algoritmo é aproximadamente O(n), pois cada número do arquivo precisa ser lido e somado uma única vez.
+**What is the approximate time complexity?** The algorithm's complexity is approximately O(n), as each number in the file needs to be read and summed exactly once.
 
-## 2. Ambiente Experimental
+## 2. Experimental Environment
 
-| Item | Descrição |
+| Item | Description |
 |---|---|
-| Processador | I5-12500 |
-| Número de núcleos | 6 |
-| Memória RAM | 16gb |
-| Sistema Operacional | Win 11 |
-| Linguagem utilizada | Python |
-| Biblioteca de paralelização | Threading |
-| Compilador / Versão | VS Code - Python 3.13.2 |
+| Processor | Intel Core i5-12500 |
+| Number of Cores | 6 |
+| RAM | 16 GB |
+| Operating System | Windows 11 |
+| Language | Python |
+| Parallelization Library | `threading` |
+| IDE / Version | VS Code - Python 3.13.2 |
 
-## 3. Metodologia de Testes
+## 3. Testing Methodology
 
-**Como o tempo de execução foi medido?**  
-O tempo de execução foi medido utilizando funções de medição de tempo da linguagem Python, registrando o tempo no início e no final da execução do programa. A diferença entre esses valores representa o tempo total de processamento.
+**How was execution time measured?** Execution time was measured using Python's built-in time measurement functions, recording timestamps at the start and end of the program's execution. The difference represents the total processing time.
 
-**Quantas execuções foram realizadas?**  
-Foram realizadas duas execuções para cada configuração de threads, para reduzir possíveis variações de desempenho durante os testes.
+**How many executions were performed?** Two executions were performed for each thread configuration to reduce potential performance variations during testing.
 
-**Foi utilizada média dos tempos?**  
-Sim. Para cada configuração foi calculada a média dos tempos obtidos nas duas execuções, e esse valor médio foi utilizado na análise dos resultados.
+**Was an average time used?** Yes. For each configuration, the average time of the two executions was calculated and used for the results analysis.
 
-**Qual tamanho da entrada foi usado?**  
-Nos testes foram utilizados arquivos contendo 1.000.000 de números e 10.000.000 de números, onde cada linha do arquivo possui um número inteiro.
+**Thread Configurations Tested:**
+* 1 thread (Serial version)
+* 2 threads
+* 4 threads
+* 8 threads
+* 12 threads
 
-**Configurações testadas**
+**Execution Conditions:** Experiments were run on a personal computer using VS Code. During testing, other programs and applications were closed to minimize interference and allocate maximum machine resources to the script.
 
-1 thread (versão serial)  
-2 threads  
-4 threads  
-8 threads  
-12 threads  
+## 4. Experimental Results
 
-**Número de execuções para cada configuração**  
-Para cada configuração de threads foram realizadas duas execuções do programa.
-
-**Forma de cálculo da média**  
-A média foi calculada somando os tempos das duas execuções e dividindo o resultado por dois.
-
-**Condições de execução**  
-Os experimentos foram executados em um computador pessoal, utilizando o VS Code para rodar o programa em Python. Durante os testes, foram fechados outros programas e aplicações para reduzir interferências e permitir que o programa utilizasse a maior parte dos recursos da máquina.
-
-## 4. Resultados Experimentais
-
-| Nº Threads/Processos | Tempo de Execução (s) |
+| Threads/Processes | Execution Time (s) |
 |---|---|
 | 1 | 1.0100565 |
 | 2 | 1.027310 |
@@ -76,119 +55,64 @@ Os experimentos foram executados em um computador pessoal, utilizando o VS Code 
 | 8 | 1.1240425 |
 | 12 | 1.090313 |
 
-## 5. Cálculo de Speedup e Eficiência
+## 5. Speedup and Efficiency Calculation
 
-Fórmulas Utilizadas
+**Formulas Used:**
 
 Speedup(p) = T(1) / T(p)
+* **T(1)** = Serial execution time
+* **T(p)** = Execution time with p threads/processes
 
-Onde:
+Efficiency(p) = Speedup(p) / p
+* **p** = Number of threads or processes
 
-T(1) = tempo da execução serial  
-T(p) = tempo com p threads/processos  
+## 6. Results Table
 
-Eficiência(p) = Speedup(p) / p
-
-Onde:
-
-p = número de threads ou processos
-
-## 6. Tabela de Resultados
-
-| Threads/Processos | Tempo (s) | Speedup | Eficiência |
+| Threads/Processes | Time (s) | Speedup | Efficiency |
 |---|---|---|---|
-| 1 | 1.009876 | 1,000 | 1.000 |
+| 1 | 1.009876 | 1.000 | 1.000 |
 | 2 | 1.023370 | 0.987 | 0.494 |
 | 4 | 1.030603 | 0.980 | 0.245 |
 | 8 | 1.094857 | 0.922 | 0.115 |
 | 12 | 1.131273 | 0.962 | 0.080 |
 
-## 7. Gráfico de Tempo de Execução
+## 7. Execution Time Chart
 
-Construa um gráfico mostrando o tempo de execução em função do número de threads/processos.
-
-Orientações
-
-Eixo X: número de threads/processos  
-Eixo Y: tempo de execução (segundos)
-
-Gráfico abaixo:
-
-![Tempo de Execução](execucao.png)
+![Execution Time](execucao.png)
 
 ---
 
-## 8. Gráfico de Speedup
-
-Construa um gráfico mostrando o speedup obtido.
-
-Orientações
-
-Eixo X: número de threads/processos  
-Eixo Y: speedup  
-Incluir também a linha de speedup ideal (linear) para comparação  
-
-Gráfico abaixo:
+## 8. Speedup Chart
 
 ![Speedup](speedup.png)
 
 ---
 
-## 9. Gráfico de Eficiência
+## 9. Efficiency Chart
 
-Construa um gráfico mostrando a eficiência da paralelização.
+![Efficiency](eficiencia.png)
 
-Orientações
+## 10. Results Analysis
 
-Eixo X: número de threads/processos  
-Eixo Y: eficiência  
-Valores entre 0 e 1  
+**Was the obtained speedup close to the ideal?** No. The speedup was below expectations and, in some cases, less than 1, indicating the program did not run faster with more threads.
 
-Gráfico abaixo:
+**Did the application show scalability?** No. Increasing the number of threads did not significantly reduce the execution time.
 
-![Eficiência](eficiencia.png)
+**At what point did efficiency start to drop?** Efficiency began to drop at 2 threads and continued decreasing as more threads were added.
 
-## 10. Análise dos Resultados
+**Did the thread count exceed physical cores?** Yes. The processor has 6 physical cores, and tests were conducted with up to 8 and 12 threads.
 
-**O speedup obtido foi próximo do ideal?**  
-Não. O speedup ficou abaixo do esperado e em alguns casos foi menor que 1, indicando que o programa não ficou mais rápido com mais threads.
+**Was there parallelization overhead?** Yes. Thread management and synchronization generated an additional cost that impacted performance.
 
-**A aplicação apresentou escalabilidade?**  
-Não. O aumento do número de threads não reduziu o tempo de execução de forma significativa.
+**Potential Causes for Performance Loss:**
+* Thread creation overhead
+* File I/O reading bottlenecks
+* CPU resource contention
 
-**Em qual ponto a eficiência começou a cair?**  
-A eficiência começou a cair a partir de 2 threads e continuou diminuindo conforme mais threads foram adicionadas.
+**Algorithm Bottlenecks:**
+* File reading step
+* Workload division among threads
 
-**O número de threads ultrapassa o número de núcleos físicos da máquina?**  
-Sim. O processador possui 6 núcleos físicos e alguns testes foram realizados com 8 e 12 threads.
+## 11. Conclusion
 
-**Houve overhead de paralelização?**  
-Sim. O gerenciamento e sincronização das threads gerou um custo adicional que impactou o desempenho.
-
-**Possíveis causas para perda de desempenho**
-
-- Overhead das threads
-- Leitura do arquivo como gargalo
-- Disputa por recursos da CPU
-
-**Gargalos no algoritmo**
-
-- Leitura do arquivo
-- Divisão do trabalho entre as threads
-
-**Sincronização entre threads/processos**
-
-A necessidade de sincronizar algumas operações entre threads pode ter aumentado o tempo de execução.
-
-**Comunicação entre processos**
-
-Como foi utilizado threading, não houve comunicação entre processos, apenas entre threads.
-
-**Contenção de memória ou cache**
-
-Com muitas threads acessando dados ao mesmo tempo, pode ter ocorrido contenção de memória ou cache.
-
-## 11. Conclusão
-
-Os resultados mostram que a paralelização não trouxe o ganho de desempenho esperado para essa aplicação. Em alguns casos, o tempo de execução até aumentou com mais threads. Isso ocorreu devido ao overhead da paralelização, à leitura do arquivo e à limitação de núcleos do processador. Mesmo assim, o experimento foi importante para entender na prática conceitos de speedup, eficiência e limitações do paralelismo.
-```
+The results demonstrate that parallelization did not yield the expected performance gains for this specific application. In some configurations, the execution time actually increased. This was primarily due to thread overhead, the I/O bound nature of file reading, and the processor's core limitations. Nonetheless, the experiment was highly valuable for practically understanding concurrency concepts like speedup, efficiency, and the limitations of parallelism in I/O-bound tasks.
